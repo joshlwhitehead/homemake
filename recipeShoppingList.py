@@ -37,7 +37,7 @@ lens = []
 for i in shoppingList:
     shoppingList[i].sort(reverse=1)
     lens.append(len(shoppingList[i]))
-# print(shopp|ingList)
+# print(shoppingList)
 
 while len(set(lens)) > 1:
     smallest = min(lens)
@@ -50,6 +50,7 @@ while len(set(lens)) > 1:
 
 
 
+# print(shoppingList)
 dF = pd.DataFrame(shoppingList)
 count = 1
 x = ''
@@ -57,4 +58,4 @@ for i in range(len(shoppingList)-1):
     dF.insert(i+count,x,None)
     count += 1
     x += ' '
-dF.to_excel('test.xlsx',index=0)
+# dF.to_excel('test.xlsx',index=0)
