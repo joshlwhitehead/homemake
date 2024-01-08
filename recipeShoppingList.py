@@ -23,20 +23,22 @@ for rec in recipes:
             ingredientTypes2[ing] = np.array(ingredientTypes[ing]).T
         except:
             pass
-for i in ingredientTypes2:
-    for u in ingredientTypes2[i]:
-        u = list(u)
-        while 'nan' in u:
-            u.remove('nan')
-        combine = ' '.join(u)
-        if i not in shoppingList:
-            shoppingList[i] = [combine]
-        else:
-            shoppingList[i].append(combine)
-lens = []
-for i in shoppingList:
-    shoppingList[i].sort(reverse=1)
-    lens.append(len(shoppingList[i]))
+
+    for i in ingredientTypes2:
+        for u in ingredientTypes2[i]:
+            u = list(u)
+            while 'nan' in u:
+                u.remove('nan')
+            combine = ' '.join(u)
+            if i not in shoppingList:
+                shoppingList[i] = [combine]
+            else:
+                shoppingList[i].append(combine)
+        print(i)
+    lens = []
+    for i in shoppingList:
+        shoppingList[i].sort(reverse=1)
+        lens.append(len(shoppingList[i]))
 # print(shoppingList)
 
 while len(set(lens)) > 1:
@@ -58,4 +60,4 @@ for i in range(len(shoppingList)-1):
     dF.insert(i+count,x,None)
     count += 1
     x += ' '
-# dF.to_excel('test.xlsx',index=0)
+dF.to_excel('test.xlsx',index=0)
