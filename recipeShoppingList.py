@@ -23,6 +23,14 @@ for rec in recipes:
             ingredientTypes2[ing] = np.array(ingredientTypes[ing]).T
         except:
             pass
+    total = []
+    for i in ingredientTypes2:
+        for u in ingredientTypes2[i]:
+            u = list(u)
+            total.append(u)
+    print(total)
+    print()
+
 
     for i in ingredientTypes2:
         for u in ingredientTypes2[i]:
@@ -34,7 +42,6 @@ for rec in recipes:
                 shoppingList[i] = [combine]
             else:
                 shoppingList[i].append(combine)
-        print(i)
     lens = []
     for i in shoppingList:
         shoppingList[i].sort(reverse=1)
@@ -60,4 +67,4 @@ for i in range(len(shoppingList)-1):
     dF.insert(i+count,x,None)
     count += 1
     x += ' '
-dF.to_excel('test.xlsx',index=0)
+dF.to_csv('test.csv',index=0)
